@@ -1,9 +1,87 @@
-[gd_scene format=3 uid="uid://bkwuqowqcevq1"]
+[gd_scene load_steps=12 format=3 uid="uid://bkwuqowqcevq1"]
+
+[ext_resource type="Texture2D" uid="uid://dd7pq0i1aty61" path="res://assets/Purple Portal Sprite Sheet.png" id="1_ks1gq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_devoi"]
+size = Vector2(14, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl0gr"]
+atlas = ExtResource("1_ks1gq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih16b"]
+atlas = ExtResource("1_ks1gq")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31irv"]
+atlas = ExtResource("1_ks1gq")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txvhj"]
+atlas = ExtResource("1_ks1gq")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sukom"]
+atlas = ExtResource("1_ks1gq")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tovkt"]
+atlas = ExtResource("1_ks1gq")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1hw7"]
+atlas = ExtResource("1_ks1gq")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22nel"]
+atlas = ExtResource("1_ks1gq")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c01tg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl0gr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih16b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31irv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txvhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sukom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tovkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1hw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22nel")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 0
+visibility_layer = 0
+position = Vector2(-1, 3.5)
+shape = SubResource("RectangleShape2D_devoi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+light_mask = 4
+visibility_layer = 4
+sprite_frames = SubResource("SpriteFrames_c01tg")
