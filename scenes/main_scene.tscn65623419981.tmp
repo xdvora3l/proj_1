@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdkdgrqw7xxb0"]
+[gd_scene load_steps=14 format=3 uid="uid://bdkdgrqw7xxb0"]
 
 [ext_resource type="Script" uid="uid://ele7yelc5ue2" path="res://scripts/inventory.gd" id="1_e1cbu"]
 [ext_resource type="PackedScene" uid="uid://4tabyy5uxblx" path="res://scenes/player.tscn" id="1_pw63i"]
 [ext_resource type="Script" uid="uid://dh0ayxe6i5x2t" path="res://scripts/PlayerMovement.gd" id="2_7ykc4"]
-[ext_resource type="Texture2D" uid="uid://dvkrrp8byk14g" path="res://assets/Medieval Semi-Realistic Tower/Standard (256x256)/Medieval_Semi-Realistic_Tower_256_px.png" id="2_mngbo"]
 [ext_resource type="PackedScene" uid="uid://bv5htohqoxeiy" path="res://scenes/projectile.tscn" id="3_6wevv"]
 [ext_resource type="Texture2D" uid="uid://4taldejtxiiu" path="res://assets/BG Dirt1.png" id="3_7ykc4"]
 [ext_resource type="PackedScene" uid="uid://bkwuqowqcevq1" path="res://scenes/enemy_spawner.tscn" id="4_18nlu"]
@@ -113,19 +112,19 @@ offset_bottom = 40.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Panel"]
 layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="TowerGrid" type="GridContainer" parent="UI/Panel/MarginContainer"]
 layout_mode = 2
 columns = 6
 script = ExtResource("1_e1cbu")
-tower_texture = ExtResource("2_mngbo")
 
-[node name="Player" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("1_pw63i")]
+[node name="Player" parent="." instance=ExtResource("1_pw63i")]
 position = Vector2(10, 0)
 script = ExtResource("2_7ykc4")
 projectile_scene = ExtResource("3_6wevv")
 tower_scene = ExtResource("4_e1cbu")
-ui = NodePath("../UI/Panel/MarginContainer/TowerGrid")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(16, -33)

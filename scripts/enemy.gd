@@ -1,25 +1,36 @@
 extends CharacterBody2D
 
 #config
-var Hp: float = 50
+var Hp: float = Config.enemy_hp
 
-const SPEED = 1.0
+#const SPEED = 250.0
 const JUMP_VELOCITY = -400.0
 
 
 func _ready():
+	add_to_group("enemies")
+	
+func _process(delta):
 	pass
 
 func _physics_process(delta: float) -> void:
-	# Add gravity if the character is not on the floor
+	var speed = randi_range(Config.enemy_min_speed,Config.enemy_max_speed)
+	rotation = 0
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	look_at(get_parent().global_position)
-	# Get the direction vector from the character to the portal
-	var direction_to_portal = get_parent().global_position - self.get_parent().global_position
+	look_at(self.get_parent().get_parent().get_node('Portal').global_position)
+	var direction_to_portal = Vector2(0,0) - self.get_parent().global_position
 
-# Move the character towards the portal
-	velocity.x = direction_to_portal.x * SPEED
-	#velocity.y = move_toward(velocity.y, direction_to_portal.y, SPEED * delta)
-
+	velocity.x = direction_to_portal.normalized().x * speed
 	move_and_slide()
+	
+func take_damage(amount: int):
+	Hp -= amount
+	if Hp <= 0:
+		give_tower_to_player()
+		queue_free()
+
+func give_tower_to_player():
+	var player = self.get_parent().get_parent().get_node('Player')
+	if player and randi_range(0,100) > Config.enemy_drop_chance and player.tower_inventory < Config.inventory_slots:
+		player.add_tower_to_inventory()

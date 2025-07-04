@@ -1,9 +1,37 @@
-[gd_scene format=3 uid="uid://bkssx7q46opaa"]
+[gd_scene load_steps=7 format=3 uid="uid://bkssx7q46opaa"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" uid="uid://dk0v6f2rmpgsm" path="res://scripts/tower.gd" id="1_2x682"]
+[ext_resource type="Texture2D" uid="uid://dwhgunn8my02x" path="res://assets/Medieval Semi-Realistic Tower/Hi-Res (512x512)/Medieval_Semi-Realistic_Tower_512_px.png" id="2_ay4al"]
+[ext_resource type="PackedScene" uid="uid://bv5htohqoxeiy" path="res://scenes/projectile.tscn" id="2_ktxwe"]
 
-[node name="Area2D" type="Area2D" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktxwe"]
+atlas = ExtResource("2_ay4al")
+region = Rect2(0, 0, 512, 512)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qrbg1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktxwe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ay4al"]
+size = Vector2(28, 49)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_2x682")
+projectile_scene = ExtResource("2_ktxwe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_qrbg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ay4al")

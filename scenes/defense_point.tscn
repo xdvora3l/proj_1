@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bpc8s53krwxty" path="res://assets/Green Portal Sprite Sheet.png" id="1_abq6x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvtgs"]
-size = Vector2(29, 42)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abq6x"]
+size = Vector2(29, 344)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6l2wq"]
 atlas = ExtResource("1_abq6x")
@@ -37,7 +37,7 @@ region = Rect2(384, 0, 64, 64)
 atlas = ExtResource("1_abq6x")
 region = Rect2(448, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_uykfm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_uvtgs"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -69,18 +69,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Node2D" type="Node2D"]
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Area2D" type="Area2D"]
+collision_layer = 64
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(-0.5, 4)
-shape = SubResource("RectangleShape2D_uvtgs")
+position = Vector2(-0.5, -9)
+shape = SubResource("RectangleShape2D_abq6x")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 1)
-sprite_frames = SubResource("SpriteFrames_uykfm")
+sprite_frames = SubResource("SpriteFrames_uvtgs")

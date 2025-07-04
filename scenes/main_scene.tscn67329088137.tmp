@@ -125,6 +125,7 @@ position = Vector2(10, 0)
 script = ExtResource("2_7ykc4")
 projectile_scene = ExtResource("3_6wevv")
 tower_scene = ExtResource("4_e1cbu")
+projectile_speed = null
 ui = NodePath("../UI/Panel/MarginContainer/TowerGrid")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

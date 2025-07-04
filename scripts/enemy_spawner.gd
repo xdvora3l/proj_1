@@ -3,8 +3,8 @@ extends Node2D
 @export var enemy: PackedScene
 
 # nahradit configem
-@export var enemies_per_wave: int = 3
-@export var time_between_waves: float = 5.0
+@export var enemies_per_wave: int = Config.enemies_per_wave
+@export var time_between_waves: float = Config.wave_timer
 
 var current_wave: int = 1
 var wave_timer: Timer
@@ -37,6 +37,6 @@ func spawn_wave():
 func spawn_enemy():
 	var enemyModel = enemy.instantiate()
 	add_child(enemyModel)
-	enemyModel.global_position = enemyModel.get_parent().global_position
+	enemyModel.position = Vector2(randi_range(-20, 20), -5)
 	
 	
