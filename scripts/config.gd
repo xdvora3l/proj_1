@@ -7,7 +7,7 @@ var inventory_slots: int = 3
 var enemies_per_wave: int = 3 
 var wave_timer: float = 10 
 
-var enemy_hp: int = 3 
+var enemy_hp: int = 50
 var enemy_drop_chance: int = 75
 var enemy_min_speed: int = 50
 var enemy_max_speed: int = 150   

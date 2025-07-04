@@ -39,6 +39,14 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		
 	var direction := Input.get_axis("ui_left", "ui_right")
+	if not direction:
+		$AnimatedSprite2D.play("default")
+	else:
+		$AnimatedSprite2D.play("Move")
+	if direction < 0:
+		$AnimatedSprite2D.flip_h = true
+	else:
+		$AnimatedSprite2D.flip_h = false
 	if direction:
 		velocity.x = direction * SPEED
 	else:
@@ -49,6 +57,7 @@ func _physics_process(delta: float) -> void:
 
 
 func shoot_projectile():
+	$AnimatedSprite2D.play("Attack")
 	var projectile = projectile_scene.instantiate()
 	get_parent().add_child(projectile)
 	projectile.position = self.global_position + Vector2(0,-20)

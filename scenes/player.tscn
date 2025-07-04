@@ -288,6 +288,7 @@ collision_mask = 17
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(19, -41)
+rotation = -6.28319
 sprite_frames = SubResource("SpriteFrames_hhpqf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

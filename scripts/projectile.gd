@@ -17,7 +17,7 @@ func _process(delta):
 func _on_body_entered(body):
 	print("something")
 	if body.is_in_group("enemies"):
-		print("hit")
+		print("hit", body.Hp, dmg)
 		body.take_damage(dmg)
 		queue_free()
 		
